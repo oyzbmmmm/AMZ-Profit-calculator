@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FBA计算器</title>
+    <meta name="keywords" content="amazon FBA计算器,亚马逊计算器,亚马逊fba计算器,亚马逊运费计算,亚马逊成本计算,亚马逊利润计算器,亚马逊利润">
+    <meta name="description" content="基于亚马逊规则写的一个FBA利润计算器">
+    <link href="static/style.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="night">
+    <div class="container">
+        <!--<h2>FBA计算器</h2>-->
+        <div class="row">
+            <div class="col-sm-7">
+                <div class="title">
+                    <h4>采购成本和运费设置</h4>
+                    <div class="buy">
+                        <lapel>采购单价</lapel><input id="price" type="number" value="34"><span>元,</span>
+                        <lapel>海运</lapel><input id="sea_price" type="number" value="13"><span>元,</span>
+                        <lapel>空运</lapel><input id="air_price" type="number" value="65"><span>元,</span>
+                        <lapel style="color: var(--bs-pink)"><b>运输方式</b></lapel>
+                        <select id="ship_choose">
+                            <option value="1">海运</option>
+                            <option value="2">空运</option>
+                        </select><span> </span><i class="fa fa-question-circle" data-bs-toggle="tooltip" data-bs-placement="top" title="这里选择实际发货渠道"></i>
+                    </div>
+                </div>
+                <div class="title">
+                    <h4>重量</h4>
+                    <div class="re-weight">
+                        <lapel>每箱毛重</lapel><input id="box_gw" type="number" value="20"><span>kg, </span><i class="fa fa-question-circle" data-bs-toggle="tooltip" data-bs-placement="top" title="单箱重量亚马逊规定不超22.5kg(50Lb), UPS不超22kg"></i>
+                        <lapel>一箱装</lapel><input id="box_num" type="number" value="30"><span>个,</span>
+                        <lapel>共计发货</lapel><input id="box_pcs" type="number" value="1"><span>箱.</span>
+                        <div></div>
+                        <span>装箱尺寸</span>
+                        <input id="package_l" type="number" value="45" placeholder="长"><span>cm,</span>
+                        <input id="package_w" type="number" value="45" placeholder="宽"><span>cm,</span>
+                        <input id="package_h" type="number" value="45" placeholder="高"><span>cm,</span>
+                        <i class="fa fa-question-circle" data-bs-toggle="tooltip" data-bs-placement="top" title="UPS规定单边不超1.2m，第二长边不超过75CM(含75CM），长+（宽+高）*2不得超过266CM，否则收取附加费，亚马逊规定单个产品任意边长不得超过63.5cm, 除非一个单件出运的货物本身尺寸超过63.5cm"></i>
+                        <br>
+                        <button id="CubicCm" class="btn btn-info">计算体积重</button>
+                        <lapel>体积重</lapel><input id="package_wh" disabled><span>kg</span>
+                    </div>
+                </div>
+                <div class="title">
+                    <h4>亚马逊设置</h4>
+                    <div class="amazon">
+                        <div class="row">
+                            <div class="col-md-2 pull-right">
+                                <lapel>销售价格:</lapel>
+                            </div>
+                            <div class="col-md-10">
+                                <input id="sell_price" type="number" value="19.99"><span>美元，</span>
+                                <lapel>汇率:</lapel>
+                                <input id="rate" value="等待更新.." disabled=""><span> </span><i class="fa fa-question-circle" data-bs-toggle="tooltip" data-bs-placement="top" title="实时更新汇率"></i>
+                                <!--<input type="button" value="手动更新" id="update_rate">-->
+                            </div>
+                            <div class="col-md-2">
+                                <lapel>商品类目:</lapel>
+                            </div>
+                            <div class="col-md-10">
+                                <select class="catalog" id="catalog">
+                                    <option value="1">3D打印产品</option>
+                                    <option value="2">亚马逊设备配件</option>
+                                    <option value="3">汽车和机动车辆(不包括轮胎和车轮产品)</option>
+                                    <option value="4">汽车和机动车辆(仅包括轮胎和车轮产品)</option>
+                                    <option value="5">婴儿产品(不包括婴儿服装)</option>
+                                    <option value="6">化妆品</option>
+                                    <option value="7">书籍</option>
+                                    <option value="8">相机和照片</option>
+                                    <option value="9">手机设备</option>
+                                    <option value="10">电子消费产品</option>
+                                    <option value="11">服装和配饰</option>
+                                    <option value="12">收藏书籍</option>
+                                    <option value="13">DVD</option>
+                                    <option value="14">电子产品配件</option>
+                                    <option value="15">家具和装饰</option>
+                                    <option value="16">礼品卡</option>
+                                    <option value="17">食品杂货</option>
+                                    <option value="18">家庭和花园(包括宠物用品)</option>
+                                    <option value="19">健康和个人护理(包括个人护理电器)</option>
+                                    <option value="20">工业与科学(包括食品服务和清洁和卫生)</option>
+                                    <option value="21">珠宝</option>
+                                    <option value="22" selected = "selected">厨房用具</option>
+                                    <option value="23">行李和旅行配件</option>
+                                    <option value="24">大家电</option>
+                                    <option value="25">音乐</option>
+                                    <option value="26">乐器</option>
+                                    <option value="27">办公产品</option>
+                                    <option value="28">户外用品</option>
+                                    <option value="29">个人电脑</option>
+                                    <option value="30">软件与计算机/电子游戏</option>
+                                    <option value="31">体育 (不包含体育收藏品)</option>
+                                    <option value="32">鞋子、手袋和太阳镜</option>
+                                    <option value="33">工具和家居 (不包含基础设备电动工具)</option>
+                                    <option value="34">工具和家居 (仅包含基础设备电动工具)</option>
+                                    <option value="35">玩具和游戏</option>
+                                    <option value="36">解锁手机</option>
+                                    <option value="37">录像和DVD</option>
+                                    <option value="38">手表</option>
+                                    <option value="39">其他类别</option>
+                                </select><i class="fa fa-question-circle" data-bs-toggle="tooltip" data-bs-placement="top" title="对于某些按照价格分段算佣金的类目，改价后须重选一次类目"></i>
+                            </div>
+                            <div class="col-md-2">
+                                <lapel>佣金比率:</lapel>
+                            </div>
+                            <div class="col-md-10">
+                                <input id="commission" type="number" value="15"><span>% </span><i class="fa fa-question-circle" data-bs-toggle="tooltip" data-bs-placement="top" title="如果数据不对，或者类目缺失，请手动输入"></i>
+                            </div>
+                            <div class="end_ship row">
+                                <div class="col-md-2">商品尺寸：</div>
+                                <div class="col-md-10">
+                                    <input id="package_l_p" type="number" placeholder="长" value="20"><span>cm,</span>
+                                    <input id="package_w_p" type="number" placeholder="宽" value="10"><span>cm,</span>
+                                    <input id="package_h_p" type="number" placeholder="高" value="10"><span>cm. </span><span id="size_warning"></span>
+                                </div>
+                                <div class="col-md-2">
+                                    <lapel>尾程派送:</lapel>
+                                </div>
+                                <div class="col-md-10">
+                                    <input type="checkbox" class="iscloth" id="iscloth"><span>是否服装 </span><i class="fa fa-question-circle" data-bs-toggle="tooltip" data-bs-placement="top" title="选择服装类目自动勾选，服装类目FBA配送有区别"></i>
+                                    <input type="checkbox" class="iscloth" id="issmall"><span>FBA Small & Light </span><i class="fa fa-question-circle" data-bs-toggle="tooltip" data-bs-placement="top" title="是否注册轻小FBA，并符合其标准"></i>
+                                    <button id="end_shipping_fee" class="btn btn-info">计算尾程</button><span> </span><i class="fa fa-question-circle" data-bs-toggle="tooltip" data-bs-placement="top" title="不填入尺寸则视为起步价，目前的逻辑仅限标准件，超长件请自行填写金额"></i>
+                                    <input id="tail" type="number"><span>美元</span>
+                                    <br>
+                                    <span id="end_shipping_result" style="display:none"></span><span id="end_shipping_result_is" style="display:none"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <lapel>存储时长:</lapel>
+                            </div>
+                            <div class="col-md-10">
+                                <input id="storage_month" type="number" value="2"><span>月 </span><i class="fa fa-question-circle" data-bs-toggle="tooltip" data-bs-placement="top" title="预估一下你这件商品几个月能卖完，数据当然不准"></i>
+                            </div>
+                            <div class="col-md-2">
+                                <lapel>广告Acos:</lapel>
+                            </div>
+                            <div class="col-md-10">
+                                <input id="acos" type="number"><span>% </span><i class="fa fa-question-circle" data-bs-toggle="tooltip" data-bs-placement="top" title="整数，比如30，填写此值则假定视为每个成交都是广告带来的流量"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-5">
+                <div class="title">
+                    <div class="alert alert-danger" style="display:none" id="warning">
+                    </div>
+                    <button class="btn btn-success" id="result_btn">计算结果</button>
+                    <button class="btn btn-danger" id="reset_btn">重置数据</button>
+                    <button class="btn btn-danger" id="reload_btn">载入样本数据</button>
+                    <button class="btn btn-info" id="amzbox_btn">亚马逊箱子标准</button>
+                    <button class="btn btn-primary" id="night_btn" data-bs-toggle="tooltip" data-bs-placement="top" title="切换暗黑/白天模式"><i class="fa fa-adjust"></i></button>
+                    <div class="" id="amz_result">
+                        <div class="alert alert-info">
+                            <h3>点击上方计算按钮即可计算，或者输入后点击空白处</h3>
+                            利润 = 售价-佣金-尾程-头程-采购价-仓储费-广告费-长期仓储费
+                        </div>
+                        <div class="alert alert-info">
+                            参考资料<a href="https://sell.amazon.com/pricing.html?ref_=sdus_soa_fees_n#referral-fees" target="_blank">【亚马逊佣金费率】</a><a href="https://sellercentral.amazon.com/gp/help/external/GG5KW835AHDJCH8W">【尺寸分段】</a><a href="https://sell.amazon.com/pricing?ref_=sdus_soa_priov_n#fulfillment-fees" target="_blank">【FBA配送费】</a>
+                        </div>
+                        <div class="alert alert-info">
+                            基于自己的理解，数据有可能有出入，请自行参考官方的教程和说明来验证一次
+                        </div>
+                        <img class="img-thumbnail" src="static/images/yibasuo.jpg" >
+                        <!--<img class="img-thumbnail" style="width: 100%"src="https://cloud.silencetime.com:8443/?explorer/share/file&hash=0e27ZbpVeccQoXJ-Pzx-8g-ma50vAuDdRF89JwsWMGO4SXhdtG05GC1agw&name=CXK.gif" >-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">Copyright © <span id="year"></span><a href="https://www.silencetime.com" target="_blank">静谧时光</a><span> <a href="" target="_blank"><i class="fa fa-github"></i>Github</a></span></div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <!-- CSS only -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://use.fontawesome.com/b81abb6f01.js"></script>
+    <script src="static/script.js" charset="UTF-8"></script>
+</body>
+</html>

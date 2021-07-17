@@ -1,0 +1,231 @@
+.container {
+    margin-top: 15px;
+}
+
+.title {
+    margin: 15px 0;
+    padding: 10px;
+    border: 1px solid rgba(85, 85, 85, 0.2);
+}
+
+.title h4 {
+    position: absolute;
+    margin-top: -25px;
+    background: #fff;
+    display: inline-block;
+    padding: 0 15px;
+}
+
+.title input {
+    margin: 5px 10px;
+    width: 80px;
+}
+
+.buy {
+    padding: 15px;
+    background: rgba(30, 158, 18, 0.11);
+    margin: 10px 0;
+}
+
+.re-weight {
+    padding: 15px;
+    background: rgba(18, 158, 128, 0.11);
+    margin: 10px 0;
+}
+
+.tiji {
+    padding: 15px;
+    background: rgba(18, 107, 158, 0.11);
+}
+
+.result {
+    margin-top: 15px;
+}
+
+#result {
+    padding: 0.4em;
+    vertical-align: middle;
+}
+
+.shipping {
+    padding: 15px;
+    background: rgba(18, 20, 158, 0.11);
+    margin: 10px 0;
+}
+
+.amazon {
+    padding: 15px;
+    background: rgba(216, 195, 11, 0.11);
+    margin: 12px 0;
+}
+
+.btn-block {
+    width: 100%;
+}
+
+#amz_result {
+    padding-top: 5px;
+    
+}
+
+#amz_result .alert {
+    margin-top: 11px;
+}
+
+.catalog {
+    margin: 10px;
+    /* width: 200px; */
+    padding: 4px;
+    vertical-align: middle;
+}
+
+.submit p {
+    margin: 0;
+}
+.amazon .end_ship {
+    margin: 10px 0;
+    padding: 10px 0;
+    border: 1px solid #dcd24b78;
+    background: #fbed583b;
+}
+.end_ship .iscloth {
+    width: 15px;
+    height: 2em;
+    vertical-align: middle;
+    line-height: 1.5em;
+}
+.ripple {
+    box-sizing: border-box;
+    position: relative;
+}
+
+.ripple:before {
+    animation: ripple 2s ease-out infinite;
+    background: #00e6ec;
+    border: solid 2px #09c;
+    border-radius: 1em;
+    bottom: 0;
+    box-sizing: border-box;
+    content: "";
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: -1
+}
+
+.ripple:after {
+    animation: ripple 2s 1s ease-out infinite;
+    border: solid 2px #09c;
+    background: #00e0ff;
+    border-radius: 1em;
+    bottom: 0;
+    box-sizing: border-box;
+    content: "";
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: -1
+}
+
+@keyframes ripple {
+    0% {
+        opacity: .25;
+    }
+    100% {
+        border-radius: 2em;
+        opacity: 0;
+        transform: scale(3);
+    }
+}
+
+.night {
+    background: #2f2f2f;
+    color: #cecece;
+}
+.night input {
+    background: #98989845;
+    border: 1px solid #c5c5c559;
+    color:#c7c7c7;
+    border-radius: 3px;
+}
+.night input::-webkit-input-placeholder {
+    color:#fffc;
+}
+.night .title {
+    border-color: #ffffff29
+}
+.night .title h4 {
+    background: #2f2f2f
+}
+.night .table {
+    border-color: #555;
+    background: none;
+    color: #66bbe0
+}
+.night .table-striped>tbody>tr:nth-of-type(odd) {
+    color: #3da26d
+}
+.night .table-hover>tbody>tr:hover {
+    background: #232323;
+    color: #8ccae4
+}
+.night .alert-info {
+    color: #c0e7ef;
+    background-color: #cff4fc38;
+    border-color: #b6effb3b;
+}
+.night .alert-info a {
+    color: #c0e7ef;
+    text-decoration: none;
+}
+.night select {
+    background: #ababab69;
+    color: #dcdcdc
+}
+.night select option {
+    background: #3c3c3c;
+}
+.night ::-webkit-scrollbar {
+    background: #222
+}
+.night ::-webkit-scrollbar-thumb {
+    background: #5d5d5dbd
+}
+.night .btn-success {
+    background-color: #1987548a;
+    color: fffc;
+}
+.night .btn-danger {
+    background-color: #dc354580;
+    border-color: #dc354594;
+    color: #fffc;
+}
+.night .btn-info {
+    background-color: #0dcaf0a1;
+    color: #fffc;
+}
+.night .btn-info:hover {
+    color: #fffc;
+    background-color: #0787a0a1;
+}
+.night .btn-primary {
+    background-color: #0d6efd59;
+    color: #fffc;
+}
+.night .img-thumbnail {
+    background: none;
+    opacity: 0.4;
+}
+table {
+    margin-top: 1em;
+}
+.footer {
+    text-align: center;
+}
+.footer a {
+    color: #fffc;
+    cursor: pointer;
+    text-decoration: none;
+}
