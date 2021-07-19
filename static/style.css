@@ -89,7 +89,8 @@
     background: #fbed583b;
 }
 
-.end_ship .iscloth {
+.end_ship .iscloth,
+.three .isthreeparty {
     width: 15px;
     height: 2em;
     vertical-align: middle;
