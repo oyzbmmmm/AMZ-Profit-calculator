@@ -24,7 +24,6 @@ function jQuery110203991885021937811_1586223277956(data) {
     // var title = data.Result[0].DisplayData.resultData.tplData.content1;
     var usd2rmb = data.Result[0].DisplayData.resultData.tplData.money2_num;
     $('#rate').val(usd2rmb);
-    $('#usd').text(usd2rmb);
 }
 
 // 获取节点
