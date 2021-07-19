@@ -125,6 +125,8 @@
                                 <div class="col-md-10">
                                     <input type="checkbox" class="iscloth" id="iscloth"><span>是否服装 </span><i class="fa fa-question-circle" data-bs-toggle="tooltip" data-bs-placement="top" title="选择服装类目自动勾选，服装类目FBA配送有区别"></i>
                                     <input type="checkbox" class="iscloth" id="issmall"><span>FBA Small & Light </span><i class="fa fa-question-circle" data-bs-toggle="tooltip" data-bs-placement="top" title="是否注册轻小FBA，并符合其标准"></i>
+                                    <input type="checkbox" class="iscloth" id="isthereparty"><span>海外仓中转 </span><i class="fa fa-question-circle" data-bs-toggle="tooltip" data-bs-placement="top" title="是否先发到海外仓，再中转进亚马逊仓库"></i><br>
+                                    <span id="thereparty_display" style="display: none;">海外仓运费<input value="0.355" id="thereparty_fee" type="number">美金/磅，费用：<input id="thereparty_fee_result" type="number" disabled>美元<br></span>
                                     <button id="end_shipping_fee" class="btn btn-info">计算尾程</button><span> </span><i class="fa fa-question-circle" data-bs-toggle="tooltip" data-bs-placement="top" title="不填入尺寸则视为起步价，目前的逻辑仅限标准件，超长件请自行填写金额"></i>
                                     <input id="tail" type="number"><span>美元</span>
                                     <br>
