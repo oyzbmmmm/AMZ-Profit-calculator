@@ -153,32 +153,172 @@
                     </div>
                     <button class="btn btn-success" id="result_btn">计算结果</button>
                     <button class="btn btn-danger" id="reset_btn">重置数据</button>
-                    <button class="btn btn-danger" id="reload_btn">载入样本数据</button>
-                    <button class="btn btn-info" id="amzbox_btn">亚马逊箱子标准</button>
+                    <button class="btn btn-danger" id="reload_btn">载入数据</button>
+                    <button class="btn btn-info" id="amzbox_btn">箱子标准</button>
+                    <button class="btn btn-info" id="cur_btn">汇率</button>
                     <button class="btn btn-primary" id="night_btn" data-bs-toggle="tooltip" data-bs-placement="top" title="切换暗黑/白天模式"><i class="fa fa-adjust"></i></button>
                     <div class="" id="amz_result">
                         <div class="alert alert-info">
                             <h3>点击上方计算按钮即可计算，或者输入后点击空白处</h3>
-                            利润 = 售价-佣金-尾程-头程-采购价-仓储费-广告费-长期仓储费
+                            利润 = 售价-佣金-尾程-头程-采购价-仓储费-广告费-长期仓储费<br> 基于自己的理解，数据有可能有出入，请自行参考官方的教程和说明来验证一次
                         </div>
                         <div class="alert alert-info">
-                            参考资料<a href="https://sell.amazon.com/pricing.html?ref_=sdus_soa_fees_n#referral-fees" target="_blank">【亚马逊佣金费率】</a><a href="https://sellercentral.amazon.com/gp/help/external/GG5KW835AHDJCH8W">【尺寸分段】</a><a href="https://sell.amazon.com/pricing?ref_=sdus_soa_priov_n#fulfillment-fees" target="_blank">【FBA配送费】</a>
+                            参考资料<a href="https://sell.amazon.com/pricing.html?ref_=sdus_soa_fees_n#referral-fees" target="_blank">【亚马逊佣金费率】</a><a href="https://sellercentral.amazon.com/gp/help/external/GG5KW835AHDJCH8W">【尺寸分段】</a><a href="https://sell.amazon.com/pricing?ref_=sdus_soa_priov_n#fulfillment-fees"
+                                target="_blank">【FBA配送费】</a>
                         </div>
-                        <div class="alert alert-info">
-                            基于自己的理解，数据有可能有出入，请自行参考官方的教程和说明来验证一次
-                        </div>
-                        <img class="img-thumbnail" src="static/images/yibasuo.jpg" >
-                        <!--<img class="img-thumbnail" style="width: 100%"src="https://cloud.silencetime.com:8443/?explorer/share/file&hash=0e27ZbpVeccQoXJ-Pzx-8g-ma50vAuDdRF89JwsWMGO4SXhdtG05GC1agw&name=CXK.gif" >-->
                     </div>
                 </div>
             </div>
         </div>
-        <div class="footer">Copyright © <span id="year"></span><a href="https://www.silencetime.com" target="_blank">静谧时光</a><span> <a href="" target="_blank"><i class="fa fa-github"></i>Github</a></span></div>
+        <div class="model" style="display:none">
+            <div class="cur">
+                <button type="button" class="btn btn-danger float-end" id="cur_close">关闭</button>
+                <div class="currency">
+                    <select id="currency-one">
+                        <option value="AED">阿联酋迪拉姆AED</option>
+                        <option value="ARS">阿根廷比索ARS</option>
+                        <option value="AUD">澳元AUD</option>
+                        <!--<option value="BGN">保加利亚列弗BGN</option>-->
+                        <!--<option value="BRL">巴西雷亚尔BRL</option>-->
+                        <!--<option value="BSD">白俄罗斯卢布BYR</option>-->
+                        <option value="CNY">人民币CNY</option>
+                        <!--<option value="DKK">丹麦克朗DKK</option>-->
+                        <!--<option value="EGP">埃及镑EGP</option>-->
+                        <option value="EUR">欧元EUR</option>
+                        <!--<option value="FJD">斐济美元FJD</option>-->
+                        <option value="GBP">英镑GBP</option>
+                        <!--<option value="GTQ">危地马拉格查儿GTQ</option>-->
+                        <option value="HKD">港元HKD</option>
+                        <!--<option value="HRK">克罗地亚库纳HRK</option>-->
+                        <!--<option value="HUF">匈牙利福林HUF</option>-->
+                        <!--<option value="IDR">印尼盾IDR</option>-->
+                        <!--<option value="ILS">以色列新锡克尔ILS</option>-->
+                        <option value="INR">印度卢比INR</option>
+                        <!--<option value="ISK">冰岛克朗ISK</option>-->
+                        <option value="JPY">日元JPY</option>
+                        <!--<option value="KRW">韩元KRW</option>-->
+                        <!--<option value="KZT">哈萨克斯坦坚强戈KZT</option>-->
+                        <!--<option value="MXN">墨西哥比索MXN</option>-->
+                        <!--<option value="MYR">马来西亚林吉特MYR</option>-->
+                        <!--<option value="NOK">挪威克朗NOK</option>-->
+                        <!--<option value="NZD">新西兰元NZD</option>-->
+                        <!--<option value="PAB">巴拿马巴波亚PAB</option>-->
+                        <!--<option value="PEN">秘鲁索尔PEN</option>-->
+                        <!--<option value="PHP">菲律宾比索PHP</option>-->
+                        <!--<option value="PKR">巴基斯坦卢比PKR</option>-->
+                        <!--<option value="PLN">波兰兹罗提PLN</option>-->
+                        <!--<option value="PYG">巴拉圭瓜拉尼PYG</option>-->
+                        <!--<option value="RON">罗马尼亚新列伊RON</option>-->
+                        <!--<option value="RUB">卢布RUB</option>-->
+                        <option value="SAR">沙特阿拉伯人里亚尔SAR</option>
+                        <!--<option value="SEK">瑞典克朗SEK</option>-->
+                        <option value="SGD">新加坡元SGD</option>
+                        <!--<option value="THB">泰铢THB</option>-->
+                        <!--<option value="TRY">新土耳其里拉TRY</option>-->
+                        <!--<option value="TWD">新台币TWD</option>-->
+                        <!--<option value="UAH">乌克兰格里夫纳UAH</option>-->
+                        <option value="USD" selected>美元USD</option>
+                        <!--<option value="UYU">乌拉圭比索UYU</option>-->
+                        <!--<option value="VND">越南盾VND</option>-->
+                        <!--<option value="ZAR">南非兰特ZAR</option>-->
+                    </select>
+                    <input id="amount-one" placeholder="0" value="1" />
+                </div>
+
+                <div class="swap-rate-container">
+                    <button class="btn btn-primary" id="swap">交换</button>
+                    <div class="rate" id="rate"></div>
+                </div>
+
+                <div class="currency">
+                    <select id="currency-two">
+                        <option value="AED">阿联酋迪拉姆AED</option>
+                        <option value="ARS">阿根廷比索ARS</option>
+                        <option value="AUD">澳元AUD</option>
+                        <!--<option value="BGN">保加利亚列弗BGN</option>-->
+                        <!--<option value="BRL">巴西雷亚尔BRL</option>-->
+                        <!--<option value="BSD">白俄罗斯卢布BYR</option>-->
+                        <option value="CNY" selected>人民币CNY</option>
+                        <!--<option value="DKK">丹麦克朗DKK</option>-->
+                        <!--<option value="EGP">埃及镑EGP</option>-->
+                        <option value="EUR">欧元EUR</option>
+                        <!--<option value="FJD">斐济美元FJD</option>-->
+                        <option value="GBP">英镑GBP</option>
+                        <!--<option value="GTQ">危地马拉格查儿GTQ</option>-->
+                        <option value="HKD">港元HKD</option>
+                        <!--<option value="HRK">克罗地亚库纳HRK</option>-->
+                        <!--<option value="HUF">匈牙利福林HUF</option>-->
+                        <!--<option value="IDR">印尼盾IDR</option>-->
+                        <!--<option value="ILS">以色列新锡克尔ILS</option>-->
+                        <option value="INR">印度卢比INR</option>
+                        <!--<option value="ISK">冰岛克朗ISK</option>-->
+                        <option value="JPY">日元JPY</option>
+                        <!--<option value="KRW">韩元KRW</option>-->
+                        <!--<option value="KZT">哈萨克斯坦坚强戈KZT</option>-->
+                        <!--<option value="MXN">墨西哥比索MXN</option>-->
+                        <!--<option value="MYR">马来西亚林吉特MYR</option>-->
+                        <!--<option value="NOK">挪威克朗NOK</option>-->
+                        <!--<option value="NZD">新西兰元NZD</option>-->
+                        <!--<option value="PAB">巴拿马巴波亚PAB</option>-->
+                        <!--<option value="PEN">秘鲁索尔PEN</option>-->
+                        <!--<option value="PHP">菲律宾比索PHP</option>-->
+                        <!--<option value="PKR">巴基斯坦卢比PKR</option>-->
+                        <!--<option value="PLN">波兰兹罗提PLN</option>-->
+                        <!--<option value="PYG">巴拉圭瓜拉尼PYG</option>-->
+                        <!--<option value="RON">罗马尼亚新列伊RON</option>-->
+                        <!--<option value="RUB">卢布RUB</option>-->
+                        <option value="SAR">沙特阿拉伯人里亚尔SAR</option>
+                        <!--<option value="SEK">瑞典克朗SEK</option>-->
+                        <option value="SGD">新加坡元SGD</option>
+                        <!--<option value="THB">泰铢THB</option>-->
+                        <!--<option value="TRY">新土耳其里拉TRY</option>-->
+                        <!--<option value="TWD">新台币TWD</option>-->
+                        <!--<option value="UAH">乌克兰格里夫纳UAH</option>-->
+                        <option value="USD">美元USD</option>
+                        <!--<option value="UYU">乌拉圭比索UYU</option>-->
+                        <!--<option value="VND">越南盾VND</option>-->
+                        <!--<option value="ZAR">南非兰特ZAR</option>-->
+                    </select>
+                    <input id="amount-two" placeholder="0" />
+                </div>
+            </div>
+        </div>
+        <div class="box_info" style="display: none">
+            <div class="info">
+                <button type="button" class="btn btn-danger float-end " id="box_info_close">关闭</button>
+                <b>尺寸及重量要求：</b>
+                <ol>
+                    <li>Amazon规定，单箱包裹不可以超过30kg。这是amazon基于货物操作效率所规定的强制标准。但是不同站点的具体要求又有不同，欧洲站要求不超过15kg，美国是22kg。若单件重量超过要求，需要在纸箱的四面张贴“超重”的警示标志。（标签需彩色打印，且每边不小于8cm）</li>
+                    <li>纸箱任何一面尺寸不能超过63.5 cm，除非一个单件出运的货物本身尺寸超过63.5cm。纸箱单件尺寸超过63.5 cm（如：不可搬运的）必须放入标准1000 x1250 mm的托盘上（仅限UK）或800x1200 mm托盘（其他欧洲国家），除非单件可出运货物的纸箱尺寸超过标准的托盘尺寸。</li>
+                    <li>选择纸箱的尺寸是确保在货物放入后最少空余空间。空间利用率也可以通过单箱多个包装商品尽可能地最大化（在商品不受损害情况下）。</li>
+                    <li>纸箱被确定为一起销售的（比如：套装）重量大于30 kg必须被放在一个单一的托盘上（一个出售商品对应一个托盘上）并且需要在纸箱四面都张9）单件出售的纸箱货商品（比如：家具）重量大于30 kg，通常都需要打托盘。警示标签必须张贴在纸箱四面合适的位置。</li>
+                    <li>FBA要求外箱粘贴国家标；为了分辨货物。国际的式样、颜色按照《各国标志贴纸9.18（CS4）转曲（1）》文件要求执行。英国FBA头程国家标的尺寸为边长4cm的正方形。国家标粘贴在每箱货物窄侧面的右上角，两张。</li>
+                </ol>
+                <b>包装选材：</b>
+                <ol>
+                    <li>全球亚马逊都有统一的货物包装标准，都是选用标准的六面纸箱对商品进行包装。</li>
+                    <li>不要选用破损运输箱（局部或整体有破损）或污染纸箱（外围大面积被涂画）包装商品。</li>
+                    <li>不要使用可生物分解的包装（钛mgc包装）打包商品。</li>
+                    <li>不要使用柔软、容易破损的纸箱，包装必须足够坚硬，在运输货物的过程中能够承受任何外界的压力。</li>
+                    <li>纸箱内的填充物不要用松散的材质填充（如：泡沫塑料或者碎纸），填充物须用能被亚马逊接受的材料。用大型尺寸的衬垫，例如空气枕，整张纸张，泡沫纸或者缠绕膜。</li>
+                    <li>在使用二次利用的纸箱时，确保盒子襟翼完好无损。</li>
+                    <li>不能用大型订书钉或尼龙纤维胶带对纸箱固定或封口。</li>
+                    <li>当多种货物箱运输时，不要用打包带，松紧带或者其他皮带来捆绑纸箱。</li>
+                    <li>不要在纸箱外围做增加填充物、防护板、纸板等操作。</li>
+                    <li>除非单件货物的纸箱尺寸超标，纸箱的任意一边尺寸不得超过63.5cm。</li>
+                    <li>不要发送尺寸像托盘尺寸一样的纸箱。</li>
+                </ol>
+                <p>入仓被拒的货物需发回到原处，重新打包入仓，时间为一周左右，不仅会产生额外的费用，还会延误货物的交期。所以在出货前需要仔细核对自己的货物包装等问题是否符合目的国的要求，以免因被拒收而造成的损失。</p>
+            </div>
+        </div>
+        <div class="footer">Copyright © <span id="year"></span><a href="https://www.silencetime.com" target="_blank">静谧时光</a><span> <a href="https://github.com/oyzbmmmm/AMZ-Profit-calculator" target="_blank"><i class="fa fa-github"></i>Github</a></span></div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
     <!-- CSS only -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://use.fontawesome.com/b81abb6f01.js"></script>
     <script src="static/script.js" charset="UTF-8"></script>
+    <script src="static/cur.js" charset="UTF-8"></script>
 </body>
+
 </html>
