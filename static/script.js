@@ -104,6 +104,8 @@ $('#isthereparty').click(function() {
     } else {
         $('#thereparty_display').hide();
     }
+    $('#end_shipping_fee').click();
+    $("input, select").blur();
 })
 
 $('#end_shipping_fee').click(function() {
