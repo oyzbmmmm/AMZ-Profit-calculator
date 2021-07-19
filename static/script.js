@@ -96,13 +96,25 @@ $('#box_info_close').click(function() {
     $('.box_info').hide();
 });
 
+$('#isthereparty').click(function() {
+    var three_party = $('#isthereparty').prop("checked");
+    console.log(three_party);
+    if (three_party) {
+        $('#thereparty_display').show();
+    } else {
+        $('#thereparty_display').hide();
+    }
+})
+
 $('#end_shipping_fee').click(function() {
     $('#end_shipping_fee').removeClass('ripple');
     var ship_box = $('#box_pcs').val();
     var re_gw = $('#box_gw').val();
     var re_pieces = $('#box_num').val();
     var small_light = $('#issmall').prop("checked");
+    var three_party = $('#isthereparty').prop("checked");
     var cloth = $('#iscloth').prop("checked");
+    var thereparty_fee = $('#thereparty_fee').val();
     var end_shipping_package_l = $('#package_l_p').val();
     var end_shipping_package_w = $('#package_w_p').val();
     var end_shipping_package_h = $('#package_h_p').val();
@@ -153,6 +165,13 @@ $('#end_shipping_fee').click(function() {
         finally_weight_info = '实重' + o_re_wei_pcs.toFixed(2) + 'Lb大于体积重' + inch_weight.toFixed(2) + 'Lb，取实重：' + o_re_wei_pcs.toFixed(4) + 'Lb(磅)';
     }
     console.log('得最终重量：' + finally_weight);
+    if (three_party) {
+        var three_party_fee = (finally_weight * thereparty_fee).toFixed(4);
+        $('#thereparty_fee_result').val(three_party_fee);
+    } else {
+        three_party_fee = 0;
+        $('#thereparty_fee_result').val(0);
+    }
     $('#end_shipping_result').show();
     $('#end_shipping_result_is').show();
     $('#end_shipping_result').html(finally_weight_info);
@@ -282,6 +301,7 @@ $("input, select, #end_shipping_fee, #CubicCm").not('#currency-one').not('#curre
     var end_shipping_package_h = $('#package_h_p').val();
     var storage_month = $('#storage_month').val();
     var storage_days = storage_month * 12;
+    var three_party_fee = $('#thereparty_fee_result').val();
     end_shipping_package_l = Number(end_shipping_package_l);
     end_shipping_package_w = Number(end_shipping_package_w);
     end_shipping_package_h = Number(end_shipping_package_h);
@@ -403,9 +423,9 @@ $("input, select, #end_shipping_fee, #CubicCm").not('#currency-one').not('#curre
     // console.log('单件所占存储 = ' + lfyc + '立方英尺');
     var storage_fee_d = lfyc * 0.75;
     var storage_fee_w = lfyc * 2.4;
-    var money = sell_price * rate - sell_price * commission * rate - tail * rate - shipping_fee * o_re_wei_pcs - storage_fee_d * storage_month * rate - buy_price - acos * sell_price * rate / 100 - storage_fee_long;
+    var money = sell_price * rate - sell_price * commission * rate - tail * rate - shipping_fee * o_re_wei_pcs - storage_fee_d * storage_month * rate - buy_price - acos * sell_price * rate / 100 - storage_fee_long - three_party_fee;
     // console.log('淡季利润 = ' + money);
-    var money_w = sell_price * rate - sell_price * commission * rate - tail * rate - shipping_fee * o_re_wei_pcs - storage_fee_w * storage_month * rate - buy_price - acos * sell_price * rate / 100;
+    var money_w = sell_price * rate - sell_price * commission * rate - tail * rate - shipping_fee * o_re_wei_pcs - storage_fee_w * storage_month * rate - buy_price - acos * sell_price * rate / 100 - storage_fee_long - three_party_fee;
     // console.log('旺季利润 = ' + money_w);
     money = Number(money).toFixed(4);
     money_w = Number(money_w).toFixed(4);
@@ -422,6 +442,7 @@ $("input, select, #end_shipping_fee, #CubicCm").not('#currency-one').not('#curre
         '<tr><td>佣金比例：</td><td>' + commission * 100 + '%</td></tr>' +
         '<tr><td>销售佣金：</td><td>' + y_fee + '美元，' + (y_fee * rate).toFixed(4) + '元</td></tr>' +
         '<tr><td>尾程派送费：</td><td>' + tail + '美元，' + (tail * rate).toFixed(4) + '元</td></tr>' +
+        '<tr><td>海外仓中转：</td><td>' + three_party_fee + '美元，' + (three_party_fee * rate).toFixed(4) + '元</td></tr>' +
         '<tr><td>预计仓储费：</td><td>单件占用仓储：' + lfyc.toFixed(4) + '立方英尺，存放' + storage_month + '月，淡季' + (storage_fee_d * storage_month).toFixed(4) + '美元，旺季：' + (storage_fee_w * storage_month).toFixed(4) + '美元</td></tr>' +
         '<tr><td>长期仓储费：</td><td>' + storage_fee_long + storage_fee_long_info + '</td></tr>' +
         '<tr><td>毛利润：</td><td>淡季：' + (money / rate).toFixed(4) + '美元，' + money + '元。 旺季：' + (money_w / rate).toFixed(4) + '美元，' + money_w + '元。</td></tr>' +
