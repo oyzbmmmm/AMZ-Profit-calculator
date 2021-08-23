@@ -6,48 +6,76 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FBA计算器</title>
-    <meta name="keywords" content="amazon FBA计算器,亚马逊计算器,亚马逊fba计算器,亚马逊运费计算,亚马逊成本计算,亚马逊利润计算器,亚马逊利润">
+    <meta name="keywords" content="amazon FBA计算器,亚马逊计算器,亚马逊fba计算器,亚马逊运费计算,亚马逊成本计算,亚马逊利润计算器,亚马逊利润怎么算,acos怎么算, 亚马逊acos怎么算">
     <meta name="description" content="基于亚马逊规则写的一个FBA利润计算器">
-    <link href="static/style.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/gh/oyzbmmmm/tool_static@master/fba/static/style.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/gh/oyzbmmmm/tool_static@master/fba/static/lineAnimation.css" rel="stylesheet">
+    <link href="https://unpkg.com/tableexport@5.2.0/dist/css/tableexport.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?417b7ed854fecce7d405b20e69a961fd";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
 </head>
 
 <body class="">
     <div class="container">
         <!--<h2>FBA计算器</h2>-->
-        <div class="row">
+        <div class="bg-container">
+            <img src="" class="bg" style="display:none">
+            <img src="https://tool.silencetime.com/acg-api/random.php" class="bg2">
+        </div>
+        <div class="row page">
             <div class="col-sm-7">
-                <div class="title">
+                <div class="title bz-buttonAnimat clockwise both">
+                    <div class="inner"></div>
                     <h4>采购成本和运费设置</h4>
                     <div class="buy">
-                        <lapel>采购单价</lapel><input id="price" type="number" value="34"><span>元,</span>
-                        <lapel>海运</lapel><input id="sea_price" type="number" value="13"><span>元,</span>
-                        <lapel>空运</lapel><input id="air_price" type="number" value="65"><span>元,</span>
+                        <lapel>采购单价</lapel><input id="price" type="number" class="requried"><span>元,</span>
                         <lapel style="color: var(--bs-pink)"><b>运输方式</b></lapel>
                         <select id="ship_choose">
                             <option value="1">海运</option>
                             <option value="2">空运</option>
+                            <option value="3">卡航</option>
+                            <option value="4">铁路</option>
                         </select><span> </span><i class="fa fa-question-circle" data-bs-toggle="tooltip" data-bs-placement="top" title="这里选择实际发货渠道"></i>
+                        <lapel>体积系数</lapel>
+                        <select id="tijixishu">
+                            <option value="1">6000</option>
+                            <option value="2">5000</option>
+                        </select>
+                        <br>
+                        <lapel>海运</lapel><input id="sea_price" type="number" value="13"><span>元,</span>
+                        <lapel>空运</lapel><input id="air_price" type="number" value="65"><span>元,</span>
+                        <lapel>卡航</lapel><input id="car_price" type="number" value="25"><span>元,</span>
+                        <lapel>铁路</lapel><input id="train_price" type="number" value="10"><span>元,</span>
                     </div>
                 </div>
-                <div class="title">
+                <div class="title bz-buttonAnimat clockwise both">
+                    <div class="inner"></div>
                     <h4>重量</h4>
                     <div class="re-weight">
-                        <lapel>每箱毛重</lapel><input id="box_gw" type="number" value="20"><span>kg, </span><i class="fa fa-question-circle" data-bs-toggle="tooltip" data-bs-placement="top" title="单箱重量亚马逊规定不超22.5kg(50Lb), UPS不超22kg"></i>
-                        <lapel>一箱装</lapel><input id="box_num" type="number" value="30"><span>个,</span>
-                        <lapel>共计发货</lapel><input id="box_pcs" type="number" value="1"><span>箱.</span>
+                        <lapel>每箱毛重</lapel><input id="box_gw" type="number" class="requried"><span>kg, </span><i class="fa fa-question-circle" data-bs-toggle="tooltip" data-bs-placement="top" title="单箱重量亚马逊规定不超22.5kg(50Lb), UPS不超22kg"></i>
+                        <lapel>一箱装</lapel><input id="box_num" type="number" class="requried"><span>个,</span>
+                        <lapel>共计发货</lapel><input id="box_pcs" type="number" class="requried"><span>箱.</span>
                         <div></div>
                         <span>装箱尺寸</span>
-                        <input id="package_l" type="number" value="45" placeholder="长"><span>cm,</span>
-                        <input id="package_w" type="number" value="45" placeholder="宽"><span>cm,</span>
-                        <input id="package_h" type="number" value="45" placeholder="高"><span>cm,</span>
+                        <input id="package_l" type="number" placeholder="长" class="requried"><span>cm,</span>
+                        <input id="package_w" type="number" placeholder="宽" class="requried"><span>cm,</span>
+                        <input id="package_h" type="number" placeholder="高" class="requried"><span>cm,</span>
                         <i class="fa fa-question-circle" data-bs-toggle="tooltip" data-bs-placement="top" title="UPS规定单边不超1.2m，第二长边不超过75CM(含75CM），长+（宽+高）*2不得超过266CM，否则收取附加费，亚马逊规定单个产品任意边长不得超过63.5cm, 除非一个单件出运的货物本身尺寸超过63.5cm"></i>
-                        <br>
-                        <button id="CubicCm" class="btn btn-info">计算体积重</button>
+                        <!--<br>-->
+                        <button id="CubicCm" class="btn btn-info" style="display:none">计算体积重</button>
                         <lapel>体积重</lapel><input id="package_wh" disabled><span>kg</span>
                     </div>
                 </div>
-                <div class="title">
+                <div class="title bz-buttonAnimat clockwise both">
+                    <div class="inner"></div>
                     <h4>亚马逊设置</h4>
                     <div class="amazon">
                         <div class="row">
@@ -55,9 +83,24 @@
                                 <lapel>销售价格:</lapel>
                             </div>
                             <div class="col-md-10">
-                                <input id="sell_price" type="number" value="19.99"><span>美元，</span>
+                                <input id="sell_price" type="number" class="requried">
+                                <select id="cur_choose">
+                                    <option value="USD">美元</option>
+                                    <option value="CAD">加元</option>
+                                    <option value="GBP">英镑</option>
+                                    <option value="EUR">欧元</option>
+                                    <option value="AUD">澳元</option>
+                                    <option value="JPY">日元</option>
+                                </select>
+                                <input id="rate_usd" type="number" class="rate-hidden" hidden>
+                                <input id="rate_cad" type="number" class="rate-hidden" hidden>
+                                <input id="rate_gbp" type="number" class="rate-hidden" hidden>
+                                <input id="rate_eur" type="number" class="rate-hidden" hidden>
+                                <input id="rate_aud" type="number" class="rate-hidden" hidden>
+                                <input id="rate_jpy" type="number" class="rate-hidden" hidden>
+                                <span> </span>
                                 <lapel>汇率:</lapel>
-                                <input id="rate" value="等待更新.." disabled=""><span> </span><i class="fa fa-question-circle" data-bs-toggle="tooltip" data-bs-placement="top" title="实时更新汇率"></i>
+                                <input id="rate_i" disabled type="number" placeholder="等待更新"><span> </span><i class="fa fa-question-circle" data-bs-toggle="tooltip" data-bs-placement="top" title="实时更新汇率，由于汇率bug,暂时只提供美元，其他货币请等待开发"></i>
                                 <!--<input type="button" value="手动更新" id="update_rate">-->
                             </div>
                             <div class="col-md-2">
@@ -115,61 +158,149 @@
                             <div class="end_ship row">
                                 <div class="col-md-2">商品尺寸：</div>
                                 <div class="col-md-10">
-                                    <input id="package_l_p" type="number" placeholder="长" value="20"><span>cm,</span>
-                                    <input id="package_w_p" type="number" placeholder="宽" value="10"><span>cm,</span>
-                                    <input id="package_h_p" type="number" placeholder="高" value="10"><span>cm. </span><span id="size_warning"></span>
+                                    <input id="package_l_p" type="number" placeholder="长" class="requried"><span>cm,</span>
+                                    <input id="package_w_p" type="number" placeholder="宽" class="requried"><span>cm,</span>
+                                    <input id="package_h_p" type="number" placeholder="高" class="requried"><span>cm. </span><span id="size_warning"></span><br> 所占仓储：
+                                    <input id="lfyc" type="number" disabled>立方英尺
+                                </div>
+                                <div class="col-md-2">
+                                    <lapel>存储时长:</lapel>
+                                </div>
+                                <div class="col-md-10">
+                                    <input id="storage_month" class="other_i" type="number" value="2"><span>月 </span><i class="fa fa-question-circle" data-bs-toggle="tooltip" data-bs-placement="top" title="预估一下你这件商品几个月能卖完，数据当然不准"></i>淡季
+                                    <input id="storage_month_fee_d" type="number" disabled><span class="thereparty_fee_result_cur">美元</span>，旺季<input id="storage_month_fee_w" type="number" disabled><span class="thereparty_fee_result_cur">美元</span><br>                                    长期仓储费用：
+                                    <span id="long_storage_fee_info"></span><input id="long_storage_fee" type="number"><span class="thereparty_fee_result_cur">美元</span>
                                 </div>
                                 <div class="col-md-2">
                                     <lapel>尾程派送:</lapel>
                                 </div>
                                 <div class="col-md-10">
                                     <input type="checkbox" class="iscloth" id="iscloth"><span>是否服装 </span><i class="fa fa-question-circle" data-bs-toggle="tooltip" data-bs-placement="top" title="选择服装类目自动勾选，服装类目FBA配送有区别"></i>
-                                    <input type="checkbox" class="iscloth" id="issmall"><span>FBA Small & Light </span><i class="fa fa-question-circle" data-bs-toggle="tooltip" data-bs-placement="top" title="是否注册轻小FBA，并符合其标准"></i>
+                                    <input type="checkbox" class="iscloth" id="issmall"><span>FBA Small & Light </span><i class="fa fa-question-circle" data-bs-toggle="tooltip" data-bs-placement="top" title="是否注册轻小FBA，并符合其标准, 售价大于7将被禁用"></i>
                                     <input type="checkbox" class="iscloth" id="isthereparty"><span>海外仓中转 </span><i class="fa fa-question-circle" data-bs-toggle="tooltip" data-bs-placement="top" title="是否先发到海外仓，再中转进亚马逊仓库"></i><br>
-                                    <span id="thereparty_display" style="display: none;">海外仓运费<input value="0.355" id="thereparty_fee" type="number">美金/磅，费用：<input id="thereparty_fee_result" type="number" disabled>美元<br></span>
-                                    <button id="end_shipping_fee" class="btn btn-info">计算尾程</button><span> </span><i class="fa fa-question-circle" data-bs-toggle="tooltip" data-bs-placement="top" title="不填入尺寸则视为起步价，目前的逻辑仅限标准件，超长件请自行填写金额"></i>
-                                    <input id="tail" type="number"><span>美元</span>
+
+                                    <button id="end_shipping_fee" class="btn btn-info" style="display: none">计算尾程</button>
+                                    <input id="tail" type="number"><span class="thereparty_fee_result_cur">美元</span>
+                                    <span id="thereparty_display" style="display: none;">,海外仓运费<input value="0.355" id="thereparty_fee" type="number"><span  class="thereparty_fee_result_cur">美元</span>/磅，费用：<input id="thereparty_fee_result" type="number"
+                                        disabled></span>
                                     <br>
                                     <span id="end_shipping_result" style="display:none"></span><span id="end_shipping_result_is" style="display:none"></span>
                                 </div>
                             </div>
-                            <div class="col-md-2">
-                                <lapel>存储时长:</lapel>
-                            </div>
-                            <div class="col-md-10">
-                                <input id="storage_month" type="number" value="2"><span>月 </span><i class="fa fa-question-circle" data-bs-toggle="tooltip" data-bs-placement="top" title="预估一下你这件商品几个月能卖完，数据当然不准"></i>
-                            </div>
+                            <!--<p>以下为选填项</p>-->
+
                             <div class="col-md-2">
                                 <lapel>广告Acos:</lapel>
                             </div>
                             <div class="col-md-10">
-                                <input id="acos" type="number"><span>% </span><i class="fa fa-question-circle" data-bs-toggle="tooltip" data-bs-placement="top" title="整数，比如30，填写此值则假定视为每个成交都是广告带来的流量"></i>
+                                <input id="acos" class="other_i" type="number"><span>% </span><i class="fa fa-question-circle" data-bs-toggle="tooltip" data-bs-placement="top" title="整数，比如30，填写此值则假定视为每个成交都是广告带来的流量"></i>，亦可检测你的ACOS盈亏平衡
                             </div>
+                            <div class="col-md-2">
+                                <lapel>其他费用:</lapel>
+                            </div>
+                            <div class="col-md-10">
+                                <input id="other" class="other_i" type="number"><span>元 </span><i class="fa fa-question-circle" data-bs-toggle="tooltip" data-bs-placement="top" title="单件的其他费用，比如贴标费，打包费等"></i>
+                            </div>
+                            <!--<div class="vat row">-->
+                            <!--    <div class="col-md-2">-->
+                            <!--        <lapel>欧洲VAT:</lapel>-->
+                            <!--    </div>-->
+                            <!--    <div class="col-md-10">-->
+                            <!--        <span>申报价值</span><input class="vat_i" id="shenbao_price" type="number" disabled placeholder="尚在"><span> </span>-->
+                            <!--        <span>申报国家</span><input class="vat_i" id="shenbao_country" type="number" disabled placeholder="开发中"><span> </span>-->
+                            <!--        <span>产品关税率</span><input class="vat_i" id="product_vat_fee" type="number" disabled placeholder="..."><span> </span>-->
+                            <!--    </div>-->
+                            <!--</div>-->
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-sm-5">
-                <div class="title">
+                <div class="title bz-buttonAnimat clockwise both">
+                    <div class="inner"></div>
                     <div class="alert alert-danger" style="display:none" id="warning">
                     </div>
-                    <button class="btn btn-success" id="result_btn">计算结果</button>
+                    <!--<button class="btn btn-success" id="result_btn">计算结果</button>-->
                     <button class="btn btn-danger" id="reset_btn">重置数据</button>
-                    <button class="btn btn-danger" id="reload_btn">载入数据</button>
+                    <!--<button class="btn btn-danger" id="reload_btn">载入测试数据</button>-->
                     <button class="btn btn-info" id="amzbox_btn">箱子标准</button>
-                    <button class="btn btn-info" id="cur_btn">汇率</button>
+                    <button class="btn btn-info" id="cur_btn">查汇率</button>
                     <button class="btn btn-primary" id="night_btn" data-bs-toggle="tooltip" data-bs-placement="top" title="切换暗黑/白天模式"><i class="fa fa-adjust"></i></button>
+                    <button class="btn btn-primary" id="erciyuan_btn">进入二次元</button>
                     <div class="" id="amz_result">
                         <div class="alert alert-info">
-                            <h3>点击上方计算按钮即可计算，或者输入后点击空白处</h3>
+                            <!--<h3>点击上方计算按钮即可计算，或者输入后点击空白处</h3>-->
                             利润 = 售价-佣金-尾程-头程-采购价-仓储费-广告费-长期仓储费<br> 基于自己的理解，数据有可能有出入，请自行参考官方的教程和说明来验证一次
                         </div>
                         <div class="alert alert-info">
-                            参考资料<a href="https://sell.amazon.com/pricing.html?ref_=sdus_soa_fees_n#referral-fees" target="_blank">【亚马逊佣金费率】</a><a href="https://sellercentral.amazon.com/gp/help/external/GG5KW835AHDJCH8W">【尺寸分段】</a><a href="https://sell.amazon.com/pricing?ref_=sdus_soa_priov_n#fulfillment-fees"
-                                target="_blank">【FBA配送费】</a>
+                            参考资料<a href="https://sell.amazon.com/pricing.html?ref_=sdus_soa_fees_n#referral-fees" target="_blank" rel="noreferrer nofollow">【亚马逊佣金费率】</a><a href="https://sellercentral.amazon.com/gp/help/external/GG5KW835AHDJCH8W" rel="noreferrer nofollow"
+                                target="_blank">【尺寸分段】</a><a href="https://sell.amazon.com/pricing?ref_=sdus_soa_priov_n#fulfillment-fees" target="_blank" rel="noreferrer nofollow">【FBA配送费】</a>
+                        </div>
+                        <div class="alert alert-dark">
+                            更新日志：
+                            <ul>
+                                <li>0715-基本的FBA计算器</li>
+                                <li>0717-根据类目自动调整佣金费率</li>
+                                <li>0718-超长超重会有提示</li>
+                                <li>0720-自动判断大件小件标准件</li>
+                                <li>0721-加入存储费用自动预估</li>
+                                <li>0722-加入广告费用预估, 可检测acos收支平衡</li>
+                                <li>0724-增加了导出到excel，</li>
+                                <li>0725-增加多货币</li>
+                                <li>0729-合并导出结果excel</li>
+                                <li>0820-修复了导出结果，下载后有些单元格被错误的格式化为日期的问题</li>
+                            </ul>
+                            推荐：<br>
+                            <a href="https://tool.silencetime.com" target="_blank" rel="noreferrer">静谧时光工具箱</a><br>
+                            <a href="https://i.silencetime.com" target="_blank" rel="noreferrer">跨境导航</a><br>
+                            <div class="alert-info alert" id="hitokoto"><a id="hitokoto_text" rel="nofollow noreferrer" href="javascript:void(0)">你在地上无知的爬行，像一只瞎眼的爬虫，向着无尽的疯狂与绝望蠕动 - 时光之末 - 诺兹多姆</a></div>
+                            文字基于<a href="https://hitokoto.cn" target="_blank" rel="noreferrer nofollow">一言</a>
+
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="result_table" style="display:none">
+                <table class="table table-bordered table-hover table-striped table2excel table2excel_with_colors" id="table2excel">
+                    <thead>
+                        <tr>
+                            <td colspan="20">输出结果</td>
+                        </tr>
+                        <tr>
+                            <td>Item</td>
+                            <td>采购价</td>
+                            <td>每箱数量</td>
+                            <td>箱数</td>
+                            <td>每箱毛重</td>
+                            <td>箱子尺寸cm</td>
+                            <td>体积重kg</td>
+                            <td>运输方式</td>
+                            <td>运费单价</td>
+                            <td>单件运费</td>
+                            <td>售价</td>
+                            <td>佣金</td>
+                            <td>尾程派送</td>
+                            <td>存储时长月</td>
+                            <td colspan="2">存储费用</td>
+                            <td colspan="2">毛利润</td>
+                            <td colspan="2">毛利率</td>
+                        </tr>
+                    </thead>
+                    <tbody id="addtag">
+
+                    </tbody>
+                </table>
+                <button type="button" class="exportToExcel btn btn-info btn-block" style="display:none"><i class="fa fa-file-excel-o" aria-hidden="true"></i> 下载为Excel(实验性功能，限时开放，请勿重复点击)</button>
+                <br>
+            </div>
+            <!--Goggle ads-->
+            <div class="ads">
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2698946021741336" crossorigin="anonymous"></script>
+                <!-- FBA -->
+                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2698946021741336" data-ad-slot="8280669600" data-ad-format="auto" data-full-width-responsive="true"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
             </div>
         </div>
         <div class="model" style="display:none">
@@ -177,9 +308,10 @@
                 <button type="button" class="btn btn-danger float-end" id="cur_close">关闭</button>
                 <div class="currency">
                     <select id="currency-one">
-                        <option value="AED">阿联酋迪拉姆AED</option>
-                        <option value="ARS">阿根廷比索ARS</option>
+                        <!--<option value="AED">阿联酋迪拉姆AED</option>-->
+                        <!--<option value="ARS">阿根廷比索ARS</option>-->
                         <option value="AUD">澳元AUD</option>
+                        <option value="CAD">加元CAD</option>
                         <!--<option value="BGN">保加利亚列弗BGN</option>-->
                         <!--<option value="BRL">巴西雷亚尔BRL</option>-->
                         <!--<option value="BSD">白俄罗斯卢布BYR</option>-->
@@ -190,12 +322,12 @@
                         <!--<option value="FJD">斐济美元FJD</option>-->
                         <option value="GBP">英镑GBP</option>
                         <!--<option value="GTQ">危地马拉格查儿GTQ</option>-->
-                        <option value="HKD">港元HKD</option>
+                        <!--<option value="HKD">港元HKD</option>-->
                         <!--<option value="HRK">克罗地亚库纳HRK</option>-->
                         <!--<option value="HUF">匈牙利福林HUF</option>-->
                         <!--<option value="IDR">印尼盾IDR</option>-->
                         <!--<option value="ILS">以色列新锡克尔ILS</option>-->
-                        <option value="INR">印度卢比INR</option>
+                        <!--<option value="INR">印度卢比INR</option>-->
                         <!--<option value="ISK">冰岛克朗ISK</option>-->
                         <option value="JPY">日元JPY</option>
                         <!--<option value="KRW">韩元KRW</option>-->
@@ -212,9 +344,9 @@
                         <!--<option value="PYG">巴拉圭瓜拉尼PYG</option>-->
                         <!--<option value="RON">罗马尼亚新列伊RON</option>-->
                         <!--<option value="RUB">卢布RUB</option>-->
-                        <option value="SAR">沙特阿拉伯人里亚尔SAR</option>
+                        <!--<option value="SAR">沙特阿拉伯人里亚尔SAR</option>-->
                         <!--<option value="SEK">瑞典克朗SEK</option>-->
-                        <option value="SGD">新加坡元SGD</option>
+                        <!--<option value="SGD">新加坡元SGD</option>-->
                         <!--<option value="THB">泰铢THB</option>-->
                         <!--<option value="TRY">新土耳其里拉TRY</option>-->
                         <!--<option value="TWD">新台币TWD</option>-->
@@ -224,7 +356,7 @@
                         <!--<option value="VND">越南盾VND</option>-->
                         <!--<option value="ZAR">南非兰特ZAR</option>-->
                     </select>
-                    <input id="amount-one" placeholder="0" value="1" />
+                    <input id="amount-one" placeholder="请输入" />
                 </div>
 
                 <div class="swap-rate-container">
@@ -234,9 +366,10 @@
 
                 <div class="currency">
                     <select id="currency-two">
-                        <option value="AED">阿联酋迪拉姆AED</option>
-                        <option value="ARS">阿根廷比索ARS</option>
+                        <!--<option value="AED">阿联酋迪拉姆AED</option>-->
+                        <!--<option value="ARS">阿根廷比索ARS</option>-->
                         <option value="AUD">澳元AUD</option>
+                        <option value="CAD">加元CAD</option>
                         <!--<option value="BGN">保加利亚列弗BGN</option>-->
                         <!--<option value="BRL">巴西雷亚尔BRL</option>-->
                         <!--<option value="BSD">白俄罗斯卢布BYR</option>-->
@@ -247,12 +380,12 @@
                         <!--<option value="FJD">斐济美元FJD</option>-->
                         <option value="GBP">英镑GBP</option>
                         <!--<option value="GTQ">危地马拉格查儿GTQ</option>-->
-                        <option value="HKD">港元HKD</option>
+                        <!--<option value="HKD">港元HKD</option>-->
                         <!--<option value="HRK">克罗地亚库纳HRK</option>-->
                         <!--<option value="HUF">匈牙利福林HUF</option>-->
                         <!--<option value="IDR">印尼盾IDR</option>-->
                         <!--<option value="ILS">以色列新锡克尔ILS</option>-->
-                        <option value="INR">印度卢比INR</option>
+                        <!--<option value="INR">印度卢比INR</option>-->
                         <!--<option value="ISK">冰岛克朗ISK</option>-->
                         <option value="JPY">日元JPY</option>
                         <!--<option value="KRW">韩元KRW</option>-->
@@ -269,9 +402,9 @@
                         <!--<option value="PYG">巴拉圭瓜拉尼PYG</option>-->
                         <!--<option value="RON">罗马尼亚新列伊RON</option>-->
                         <!--<option value="RUB">卢布RUB</option>-->
-                        <option value="SAR">沙特阿拉伯人里亚尔SAR</option>
+                        <!--<option value="SAR">沙特阿拉伯人里亚尔SAR</option>-->
                         <!--<option value="SEK">瑞典克朗SEK</option>-->
-                        <option value="SGD">新加坡元SGD</option>
+                        <!--<option value="SGD">新加坡元SGD</option>-->
                         <!--<option value="THB">泰铢THB</option>-->
                         <!--<option value="TRY">新土耳其里拉TRY</option>-->
                         <!--<option value="TWD">新台币TWD</option>-->
@@ -313,14 +446,31 @@
                 <p>入仓被拒的货物需发回到原处，重新打包入仓，时间为一周左右，不仅会产生额外的费用，还会延误货物的交期。所以在出货前需要仔细核对自己的货物包装等问题是否符合目的国的要求，以免因被拒收而造成的损失。</p>
             </div>
         </div>
-        <div class="footer">Copyright © <span id="year"></span><a href="https://www.silencetime.com" target="_blank">静谧时光</a><span> <a href="https://github.com/oyzbmmmm/AMZ-Profit-calculator" target="_blank"><i class="fa fa-github"></i>Github</a></span></div>
+        <div class="footer">Copyright © <span id="year"></span><a href="https://www.silencetime.com" target="_blank" rel="noreferrer">静谧时光</a><span> <a href="https://github.com/oyzbmmmm/AMZ-Profit-calculator" target="_blank" rel="noreferrer"><i class="fa fa-github"></i>Github</a></span>
+        </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
     <!-- CSS only -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+    <!--检测设备-->
+    <script src="https://unpkg.com/current-device/umd/current-device.min.js"></script>
+    <!--图标-->
     <script src="https://use.fontawesome.com/b81abb6f01.js"></script>
-    <script src="static/script.js" charset="UTF-8"></script>
-    <script src="static/cur.js" charset="UTF-8"></script>
+    <!--excel-->
+    <!--<script src="static/jquery.table2excel.min.js"></script>-->
+    <script src="https://unpkg.com/xlsx@0.17.0/dist/xlsx.core.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/oyzbmmmm/tool_static@master/fba/static/FileSaver.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/oyzbmmmm/tool_static@master/fba/static/tableexport.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/oyzbmmmm/tool_static@master/fba/static/bootstable.min.js"></script>
+
+    <!--货币-->
+    <script src="https://cdn.jsdelivr.net/gh/oyzbmmmm/tool_static@master/fba/static/cur.js" charset="UTF-8"></script>
+    <!--main-->
+    <script src="https://cdn.jsdelivr.net/gh/oyzbmmmm/tool_static@master/fba/static/script.js" charset="UTF-8"></script>
+    <!--alert-->
+    <script src="https://cdn.jsdelivr.net/gh/oyzbmmmm/tool_static@master/fba/static/alert.js" charset="UTF-8"></script>
+
+
 </body>
 
 </html>
